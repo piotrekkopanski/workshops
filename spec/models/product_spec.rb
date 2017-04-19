@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Product do
   describe 'validations' do
@@ -15,10 +15,10 @@ describe Product do
     end
 
     describe '#average_rating' do
-      let(:user)    { create(:user) }
-      let(:product) { create(:product) }
-      let(:review1) { create(:review, rating: 2, user: user) }
-      let(:review2) { create(:review, rating: 3, user: user) }
+      
+      let(:product) { build(:product) }
+      let(:review1) { build(:review, rating: 2) }
+      let(:review2) { build(:review, rating: 2) }
 
       before do
         product.reviews << [review1, review2]

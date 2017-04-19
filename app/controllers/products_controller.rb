@@ -1,4 +1,18 @@
 class ProductsController < ApplicationController
+before_action :authenticate_user!, only: [:new, :destroy, :create]
+before_action :correct_user, only: [ :edit, :update, :destroy]
+
+def current_user?(user)
+    user == current_user
+  end
+def correct_user
+     
+    @product = Product.find(params[:id]) 
+    unless @product.user == current_user
+      redirect_to category_product_path, :flash => { :error => "You are not allowed to edit this product." }
+
+    end
+  end 
   expose(:category)
   expose(:products)
   expose(:product)
@@ -9,6 +23,13 @@ class ProductsController < ApplicationController
   end
 
   def show
+  
+  @product = Product.find(params[:id])
+  @reviews = @product.reviews
+  @table = @reviews.map {|review| review.rating}
+  @average = @table.inject(0.0) { |sum, el| sum + el }/ @table.size
+  product.average_rating = '%.1f'% @average
+  product.save
   end
 
   def new
@@ -18,19 +39,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    self.product = Product.new(product_params)
+    @product = current_user.products.new(product_params)
 
-    if product.save
-      category.products << product
-      redirect_to category_product_url(category, product), notice: 'Product was successfully created.'
+    if @product.save
+      category.products << @product
+      redirect_to category_product_url(category, @product), notice: 'Product was successfully created.'
     else
       render action: 'new'
     end
   end
 
   def update
-    if self.product.update(product_params)
-      redirect_to category_product_url(category, product), notice: 'Product was successfully updated.'
+    
+    if @product.update(product_params)
+      redirect_to category_product_url(category, @product), notice: 'Product was successfully updated.'
     else
       render action: 'edit'
     end
@@ -44,7 +66,9 @@ class ProductsController < ApplicationController
 
   private
 
+
+
   def product_params
-    params.require(:product).permit(:title, :description, :price, :category_id)
+    params.require(:product).permit(:title, :description, :price, :category_id,:average_rating,:user_id)
   end
 end

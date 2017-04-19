@@ -15,11 +15,34 @@
   %b Category
   = product.category.name
 
+%p
+  %b Average rating:
+  = product.average_rating
+
+'added by
+= product.user.email
+
+
 %h3 Reviews
 = render 'reviews/form'
 
+'Count-Rating:
+=@table
+'average:
+=@average
 = render reviews
 
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
+
+- if @product.user == current_user
+  = link_to 'Edit', edit_category_product_path(category.id, product.id)
+- else
+  
+
 \|
 = link_to 'Back', category_products_path, class: 'btn btn-primary'
+
+
+
+
+
+

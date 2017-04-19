@@ -1,0 +1,48 @@
+%p#notice= notice
+%p#error= flash[:error]
+
+%p
+  %b Title:
+  = product.title
+%p
+  %b Description:
+  = product.description
+%p
+  %b Price:
+  = product.price
+
+%p
+  %b Category
+  = product.category.name
+
+%p
+  %b Average rating:
+  = product.average_rating
+
+'added by
+= product.user.email
+
+
+%h3 Reviews
+= render 'reviews/form'
+
+'Count-Rating:
+=@table
+'average:
+=@average
+= render reviews
+
+
+- if @product.user == current_user
+  = link_to 'Edit', edit_category_product_path(category.id, @product.id)
+- else
+  
+
+\|
+= link_to 'Back', category_products_path, class: 'btn btn-primary'
+
+
+
+
+
+

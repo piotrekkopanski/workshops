@@ -1,16 +1,18 @@
 class ReviewsController < ApplicationController
+before_action :authenticate_user!, only: [:new, :update, :destroy, :create]
 
   expose(:review)
   expose(:product)
 
   def edit
-  end
-
+  end 
+   
   def create
-    self.review = Review.new(review_params)
-
-    if review.save
-      product.reviews << review
+   @review = current_user.reviews.new(review_params)
+    
+    if @review.save
+      
+      product.reviews << @review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
       render action: 'new'
@@ -24,6 +26,6 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:content, :rating)
+      params.require(:review).permit(:content, :rating,:author)
     end
 end

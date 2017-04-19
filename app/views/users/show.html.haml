@@ -1,0 +1,24 @@
+%p#notice= notice
+%p#error= flash[:error]
+
+%p
+  %b email:
+  = @user.email
+%p
+  %b Firstname:
+  = @user.firstname
+%p
+  %b Lastname:
+  = @user.lastname
+%p
+  %b Admin:
+  = @user.admin
+%p
+
+  - @reviews.each do |review|
+    = review.content
+    = l(review.created_at, format: :long)
+    %p
+
+
+

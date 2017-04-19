@@ -1,0 +1,8 @@
+%p= review.content
+%p
+  %b= review.rating
+  %em= review.author
+'add by
+= review.user.email
+'author:
+= review.author

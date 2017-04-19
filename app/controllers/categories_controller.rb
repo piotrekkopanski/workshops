@@ -1,6 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
   
+  before_filter :only => [:new, :edit, :update, :destroy, :create]  do 
+    redirect_to(new_user_session_path) unless current_user && current_user.admin?
+  end
+def admin?
+  self.admin == true
+end
   expose(:categories)
   expose(:category)
   expose(:product) { Product.new }
@@ -9,6 +15,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+  
   end
 
   def new
@@ -28,8 +35,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    if category.update(category_params)
-      redirect_to category, notice: 'Category was successfully updated.'
+     @category = Category.find(params[:id])
+    if @category.update(category_params)
+      redirect_to @category, notice: 'Category was successfully updated.'
     else
       render action: 'edit'
     end

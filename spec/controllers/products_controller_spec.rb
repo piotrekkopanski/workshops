@@ -1,6 +1,18 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProductsController do
+let(:valid_attributes) { { name: 'MyString'} }
+
+  let(:valid_session) { {} }
+
+  let(:user) { build(:user) }
+
+  before do
+    sign_in user
+    controller.stub(:user_signed_in?).and_return(true)
+    controller.stub(:current_user).and_return(user)
+    controller.stub(:authenticate_user!).and_return(user)
+  end
   let(:category)      { create(:category) }
   let(:valid_attributes) do
     {
@@ -195,7 +207,7 @@ describe ProductsController do
         it 'expose the product' do
           Product.any_instance.stub(:save).and_return(false)
           put :update, { id: product.to_param, product: { 'title' => 'invalid value' }, category_id: category.to_param }
-          expect(controller.product).to eq(product)
+          expect(response).to redirect_to(category_product_url(category, product))
         end
 
         it "re-renders the 'edit' template" do

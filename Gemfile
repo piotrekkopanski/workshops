@@ -10,7 +10,7 @@ gem 'devise'
 gem 'simple_form', '~> 3.1.0rc'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'haml-rails'
-gem 'sass-rails', github: 'rails/sass-rails'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'quiet_assets'
@@ -19,15 +19,20 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
+gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
 group :development do
   gem 'spring'
 end
 
+
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
+  gem 'rspec-core', '~> 3.5', '>= 3.5.4'
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.1', require: false
+  gem 'capybara', '~> 2.12'
+  gem 'database_cleaner'
   gem 'pry'
 end
 

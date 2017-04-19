@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CategoriesController do
 
@@ -20,12 +20,7 @@ describe CategoriesController do
       controller.current_user.stub(admin?: false)
     end
 
-    describe 'GET new' do
-      it 'redirects user to the login page' do
-        get :new, {}, valid_session
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
+    
 
     describe 'GET edit' do
       it 'redirects user to the login page' do
@@ -46,6 +41,12 @@ describe CategoriesController do
       it 'redirect user to the login page' do
         category = Category.create! valid_attributes
         put :update, {:id => category.to_param, :category => { 'name' => 'MyString'}}, valid_session
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+    describe 'GET new' do
+     it 'redirects user to the login page' do
+      get :new, {}, valid_session
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -137,7 +138,7 @@ describe CategoriesController do
 
         it 'redirects to the category' do
           put :update, {:id => category.to_param, :category => valid_attributes}, valid_session
-          response.should redirect_to(category)
+          expect(response).to redirect_to(category)
         end
       end
 
@@ -151,7 +152,7 @@ describe CategoriesController do
         it "re-renders the 'edit' template" do
           Category.any_instance.stub(:save).and_return(false)
           put :update, {:id => category.to_param, :category => { 'name' => 'invalid value'}}, valid_session
-          response.should render_template('edit')
+          expect(response).to render_template('edit')
         end
       end
     end
@@ -167,9 +168,10 @@ describe CategoriesController do
 
       it 'redirects to the categories list' do
         delete :destroy, {:id => category.to_param}, valid_session
-        response.should redirect_to(categories_url)
+        expect(response).to redirect_to(categories_url)
       end
     end
   end
+
 
 end
