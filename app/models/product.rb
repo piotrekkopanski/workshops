@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  attr_accessible :title, :description, :price, :category_id,:average_rating,:user_id
+  
   belongs_to :category
   belongs_to :user
   has_many :reviews

@@ -26,7 +26,12 @@ let(:valid_attributes) { { name: 'MyString'} }
   context 'user is not signed in' do
     describe 'POST create' do
       describe 'with valid params' do
+       before do
+       
+    sign_out user
+     end
         it 'redirects user to login page' do
+           
           post :create, { product: valid_attributes, category_id: category.to_param }
           expect(response).to redirect_to(new_user_session_path)
         end
@@ -194,7 +199,7 @@ let(:valid_attributes) { { name: 'MyString'} }
 
         it 'expose the requested product' do
           put :update, { id: product.to_param, product: valid_attributes, category_id: category.to_param }
-          expect(controller.product).to eq(@product)
+          expect(controller.product).to eq(product)
         end
 
         it 'redirects to the product' do

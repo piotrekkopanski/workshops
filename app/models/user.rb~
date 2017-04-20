@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-attr_accessible :title, :description, :price, :category_id,:average_rating,:user_id
+
   has_many :reviews
   has_many :products
+  accepts_nested_attributes_for :products
   validates :firstname ,:presence => true
   validates :lastname ,:presence => true
 end

@@ -1,7 +1,10 @@
 class Product < ActiveRecord::Base
+  attr_accessible :title, :description, :price, :category_id,:average_rating,:user_id
+  
   belongs_to :category
   belongs_to :user
   has_many :reviews
+  validates :average_rating, allow_blank: true
   validates :price ,:presence => true
   validates :title ,:presence => true
   validates :description ,:presence => true
