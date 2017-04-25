@@ -1,5 +1,10 @@
 %p= review.content
 %p
-  %b= review.rating
-  %em= review.author
-
+  %div.row
+    %div.col-md-2
+      %b Rating:
+      %b= review.rating
+    %div.col-md-2
+      %b Author:
+      %em= review.author 
+    

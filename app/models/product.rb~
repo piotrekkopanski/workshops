@@ -4,10 +4,14 @@ class Product < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   has_many :reviews
-  validates :average_rating, allow_blank: true
   validates :price ,:presence => true
   validates :title ,:presence => true
   validates :description ,:presence => true
   validates :price, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }
 
+  @reviews = @product.reviews
+  @table = @reviews.map {|review| review.rating}
+  @average = @table.inject(0.0) { |sum, el| sum + el }/ @table.size
+  product.average_rating = '%.1f'% @average
+  product.save
 end

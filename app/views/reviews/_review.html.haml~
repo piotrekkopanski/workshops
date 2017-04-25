@@ -1,8 +1,10 @@
 %p= review.content
 %p
-  %b= review.rating
-  %em= review.author
-'add by
-= review.user.email
-'author:
-= review.author
+  %div.row
+    %div.col-md-1
+      %b Rating:
+      %b= review.rating
+    %div.col-md-1
+      %b Author:
+      %em= review.author 
+    

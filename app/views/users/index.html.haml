@@ -1,17 +1,27 @@
-%h1 Listing users
-
-%table
-  %tr
-    %th Email
-    %th Firstname
-    %th Lastname
-    
-
-  - @users.each do |user|
+- model_class = User
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
     %tr
-      %td= user.email
-      %td= user.firstname
-      %td= user.lastname
-      %td= link_to 'Show', user_path( user)
-      
-%br
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:firstname)
+      %th= model_class.human_attribute_name(:lastname)
+      %th= model_class.human_attribute_name(:admin)
+      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:current_sign_in_ip)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, user_path(user)
+        %td= user.email
+        %td= user.firstname
+        %td= user.lastname
+        %td= user.admin
+        %td= user.created_at
+        %td= user.current_sign_in_at
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), user_path(user), :class => 'btn btn-xs btn-danger'
+

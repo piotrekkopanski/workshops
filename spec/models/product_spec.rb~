@@ -16,11 +16,13 @@ describe Product do
 
     describe '#average_rating' do
       
-      let(:product) { build(:product,average_rating: 2.5) }
-      let(:review1) { build(:review, rating: 2) }
-      let(:review2) { build(:review, rating: 2) }
+      let(:product) { build(:product) }
+      let(:review1) { build(:review, rating: 2,content: "s",user_id: 5) }
+      let(:review2) { build(:review, rating: 2,content: "h",user_id: 6) }
 
-      
+      before do
+        product.reviews << [review1, review2]
+      end
 
       it 'calculates average rating' do
         expect(product.average_rating).to eq 2.5

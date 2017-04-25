@@ -2,25 +2,34 @@
 %p#error= flash[:error]
 
 %p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+  %div.row
+    %div.col-md-1
+      %b Title:
+      %p
+      = product.title
+    %div.col-md-1
+      %b Description:
+      %p
+      = product.description
+    %div.col-md-1
+      %b Price:
+      %p
+      = product.price
+    %div.col-md-1
+      %b Category:
+      %p
+      = product.category.name
+    %div.col-md-3
+      %b Average_rating:
+      %p
+      = product.average_rating
+    %div.col-md-1
+      %b Added by:
+      %p
+      = product.user.email
 
 %p
-  %b Category
-  = product.category.name
 
-%p
-  %b Average rating:
-  = product.average_rating
-
-'added by
-= product.user.email
 
 
 %h3 Reviews
@@ -28,8 +37,7 @@
 
 'Count-Rating:
 =@table
-'average:
-=@average
+
 = render reviews
 
 

@@ -21,6 +21,9 @@ gem 'ffaker'
 gem 'konf'
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'protected_attributes', '~> 1.1', '>= 1.1.3'
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrapped'
+
 
 group :development do
   gem 'spring'

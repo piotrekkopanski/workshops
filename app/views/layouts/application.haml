@@ -15,8 +15,8 @@
         %p.navbar-text.navbar-right      
           - if user_signed_in? 
             Signed in as 
-            = link_to "Edit Profile", edit_user_registration_path
-            = current_user.email 
+            = current_user.email
+            = link_to "Edit Profile", edit_user_registration_path          
             = current_user.firstname
             Not you?
             = link_to "Sign out", destroy_user_session_path, method: :delete 

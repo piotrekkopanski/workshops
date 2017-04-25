@@ -1,6 +1,6 @@
 @import "bootstrap";
 .container {
-        background-image: linear-gradient(#C9FBDF, #DED7FD);
+        background-image: linear-gradient(#87F9BA, #1E1C27)
 }
 #submit-signin {
     background-color: #66DE70;
