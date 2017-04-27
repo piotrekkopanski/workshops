@@ -12,7 +12,7 @@ end
   expose(:product) { Product.new }
 
   def index
-   @categories = Category.all
+    @categories = Category.all
   end
 
   def show
