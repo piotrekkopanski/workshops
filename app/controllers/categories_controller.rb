@@ -12,7 +12,6 @@ end
   expose(:product) { Product.new }
 
   def index
-    @categories = Category.all
   end
 
   def show
