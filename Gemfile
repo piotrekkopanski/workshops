@@ -24,11 +24,17 @@ gem 'protected_attributes', '~> 1.1', '>= 1.1.3'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrapped'
 
+group :development, :test do
+  gem 'sqlite3'
+end
 
 group :development do
   gem 'spring'
 end
 
+group :production do
+gem 'pg'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
