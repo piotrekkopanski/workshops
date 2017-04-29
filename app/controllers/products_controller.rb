@@ -20,6 +20,7 @@ def correct_user
   expose_decorated(:reviews, ancestor: :product)
 
   def index
+    @products = Product.all
   end
 
   def show
