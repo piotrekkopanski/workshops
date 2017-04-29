@@ -6,27 +6,27 @@
     %div.col-md-1
       %b Title:
       %p
-      = @product.title
+      = product.title
     %div.col-md-1
       %b Description:
       %p
-      = @product.description
+      = product.description
     %div.col-md-1
       %b Price:
       %p
-      = @product.price
+      = product.price
     %div.col-md-1
       %b Category:
       %p
-      = @product.category.name
+      = product.category.name
     %div.col-md-3
       %b Average_rating:
       %p
-      = @product.average_rating
+      = product.average_rating
     %div.col-md-1
       %b Added by:
       %p
-      = @product.user.email
+      = product.user.email
 
 %p
 
@@ -38,7 +38,7 @@
 'Count-Rating:
 =@table
 
-= render reviews
+
 
 
 - if @product.user == current_user
