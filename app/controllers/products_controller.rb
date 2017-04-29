@@ -25,7 +25,7 @@ def correct_user
   end
 
   def show
-  @review = Review.find(params[:review_id])
+  @review = Review.find(params[:id])
   @product = Product.find(params[:id])
   @reviews = @product.reviews
   @table = @reviews.map {|review| review.rating}
