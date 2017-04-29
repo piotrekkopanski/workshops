@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 before_action :authenticate_user!, only: [:new, :destroy, :create]
 before_action :correct_user, only: [ :edit, :update, :destroy]
+before_action :set_product , only: [:show, :edit, :update, :destroy ,:create]
 
 def current_user?(user)
     user == current_user
@@ -67,7 +68,9 @@ def correct_user
 
   private
 
-
+   def set_product
+      @product = Product.find(params[:product_id])
+    end
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :category_id,:average_rating,:user_id)

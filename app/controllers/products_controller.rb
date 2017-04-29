@@ -69,7 +69,7 @@ def correct_user
   private
 
    def set_product
-      @product = Product.find(params[:product_id])
+      @product = Product.find(params[:id])
     end
 
   def product_params
