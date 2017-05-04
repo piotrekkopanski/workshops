@@ -26,6 +26,8 @@ def correct_user
 
   def show
  
+  @product = Product.find(params[:id])
+  @reviews = @product.reviews
   @table = @reviews.map {|review| review.rating}
   @average = @table.inject(0.0) { |sum, el| sum + el }/ @table.size
   product.average_rating = '%.1f'% @average
