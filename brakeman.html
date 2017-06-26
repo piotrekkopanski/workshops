@@ -181,8 +181,8 @@ p {
       <td>4.1.8</td>
       <td>3.6.2
       <td>
-        2017-06-26 21:10:23 +0200<br><br>
-        1.019021864 seconds
+        2017-06-26 21:15:48 +0200<br><br>
+        1.042326147 seconds
       </td>
       <td>BasicAuth, BasicAuthTimingAttack, ContentTag, CreateWith, CrossSiteScripting, DefaultRoutes, Deserialize, DetailedExceptions, DigestDoS, DynamicFinders, EscapeFunction, Evaluation, Execute, FileAccess, FileDisclosure, FilterSkipping, ForgerySetting, HeaderDoS, I18nXSS, JRubyXML, JSONEncoding, JSONParsing, LinkTo, LinkToHref, MailTo, MassAssignment, MimeTypeDoS, ModelAttrAccessible, ModelAttributes, ModelSerialize, NestedAttributes, NestedAttributesBypass, NumberToCurrency, QuoteTableName, Redirect, RegexDoS, Render, RenderDoS, RenderInline, ResponseSplitting, RouteDoS, SQL, SQLCVEs, SSLVerify, SafeBufferManipulation, SanitizeMethods, SelectTag, SelectVulnerability, Send, SendFile, SessionManipulation, SessionSettings, SimpleFormat, SingleQuotes, SkipBeforeFilter, StripTags, SymbolDoSCVE, TranslateBug, UnsafeReflection, ValidationRegex, WithoutProtection, XMLDoS, YAMLParsing</td>
     </tr>
@@ -216,7 +216,7 @@ p {
     </tr>
     <tr>
       <td>Security Warnings</td>
-      <td>10 <span class='high-confidence'>(4)</span></td>
+      <td>9 <span class='high-confidence'>(3)</span></td>
     </tr>
   
     <tr>
@@ -256,11 +256,6 @@ p {
       <td>2</td>
     </tr>
   
-    <tr>
-      <td>Session Setting</td>
-      <td>1</td>
-    </tr>
-  
   </tbody>
 </table>
 <br>
@@ -276,29 +271,6 @@ p {
     </tr>
   </thead>
   <tbody>
-  
-    <tr>
-      <td><span class='high-confidence'>High</span></td>
-      <td></td>
-      <td></td>
-      <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/session_setting/">Session Setting</a></td>
-      <td><div class='warning_message' onClick="toggle('context4');toggle('message4');toggle('full_message4')" >Session secret should not be included in version control near line 1<table id='context4' class='context' style='display:none'><caption>config/initializers/secret_token.rb</caption>      <thead style='display:none'>
-        <tr>
-          <th>line number</th>
-          <th>line content</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class='context first error'>
-          <td class='context_line'>
-            <pre class='context'>1</pre>
-          </td>
-          <td class='context'>
-            <pre class='context'>Workshops::Application.config.secret_key_base = &quot;aa13529fa237e93f8a09a29ada12064946ae89cea3d45cc9b55024e745a8dbf17ad7ac7be4548b7b8849eb8b354f5231d9c34823b338c5c48a3cd78ae4d626a3&quot;</pre>
-          </td>
-        </tr>
-</tbody></table></div></td>
-    </tr>
   
     <tr>
       <td><span class='med-confidence'>Medium</span></td>
@@ -614,7 +586,7 @@ p {
       <td></td>
       <td></td>
       <td><a rel="no-referrer" href="https://groups.google.com/d/msg/rubyonrails-security/bahr2JLnxvk/x4EocXnHPp8J">Denial of Service</a></td>
-      <td><div class='warning_message' onClick="toggle('context5');toggle('message5');toggle('full_message5')" ><span id='message5' style='display:block' >Rails 4.1.8 is vulnerable to denial of service via XML parsing (CVE-2015-3227). Upgrade to Rails vers...</span><span id='full_message5' style='display:none'>Rails 4.1.8 is vulnerable to denial of service via XML parsing (CVE-2015-3227). Upgrade to Rails version 4.1.11 near line 158</span><table id='context5' class='context' style='display:none'><caption>Gemfile.lock</caption>      <thead style='display:none'>
+      <td><div class='warning_message' onClick="toggle('context4');toggle('message4');toggle('full_message4')" ><span id='message4' style='display:block' >Rails 4.1.8 is vulnerable to denial of service via XML parsing (CVE-2015-3227). Upgrade to Rails vers...</span><span id='full_message4' style='display:none'>Rails 4.1.8 is vulnerable to denial of service via XML parsing (CVE-2015-3227). Upgrade to Rails version 4.1.11 near line 158</span><table id='context4' class='context' style='display:none'><caption>Gemfile.lock</caption>      <thead style='display:none'>
         <tr>
           <th>line number</th>
           <th>line content</th>
@@ -730,7 +702,7 @@ p {
       <td><span class='high-confidence'>High</span></td>
       <td>Install</td>
       <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/attribute_restriction/">Attribute Restriction</a></td>
-      <td><div class='warning_message' onClick="toggle('context6');toggle('message6');toggle('full_message6')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context6' class='context' style='display:none'><caption>app/models/install.rb</caption>      <thead style='display:none'>
+      <td><div class='warning_message' onClick="toggle('context5');toggle('message5');toggle('full_message5')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context5' class='context' style='display:none'><caption>app/models/install.rb</caption>      <thead style='display:none'>
         <tr>
           <th>line number</th>
           <th>line content</th>
@@ -792,7 +764,7 @@ p {
       <td><span class='high-confidence'>High</span></td>
       <td>Review</td>
       <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/attribute_restriction/">Attribute Restriction</a></td>
-      <td><div class='warning_message' onClick="toggle('context7');toggle('message7');toggle('full_message7')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context7' class='context' style='display:none'><caption>app/models/review.rb</caption>      <thead style='display:none'>
+      <td><div class='warning_message' onClick="toggle('context6');toggle('message6');toggle('full_message6')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context6' class='context' style='display:none'><caption>app/models/review.rb</caption>      <thead style='display:none'>
         <tr>
           <th>line number</th>
           <th>line content</th>
@@ -854,7 +826,7 @@ p {
       <td><span class='high-confidence'>High</span></td>
       <td>User</td>
       <td><a rel="no-referrer" href="http://brakemanscanner.org/docs/warning_types/attribute_restriction/">Attribute Restriction</a></td>
-      <td><div class='warning_message' onClick="toggle('context8');toggle('message8');toggle('full_message8')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context8' class='context' style='display:none'><caption>app/models/user.rb</caption>      <thead style='display:none'>
+      <td><div class='warning_message' onClick="toggle('context7');toggle('message7');toggle('full_message7')" >Mass assignment is not restricted using attr_accessible near line 1<table id='context7' class='context' style='display:none'><caption>app/models/user.rb</caption>      <thead style='display:none'>
         <tr>
           <th>line number</th>
           <th>line content</th>
