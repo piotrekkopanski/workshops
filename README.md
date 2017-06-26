@@ -80,3 +80,5 @@ Setup the database for your application (development and test environments):
 
 *We want all attendees at netguru workshops to have an awesome harassment-free experience. Read our full [code of conduct](https://github.com/netguru-training/workshops/blob/master/code_of_conduct.md) for more details.*
 # workshops
+
+I have done this 17 points and I used gem brakeman to detects security vulnerabilities.
